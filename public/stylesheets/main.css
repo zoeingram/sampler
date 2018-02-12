@@ -1,27 +1,271 @@
-.jumbotron {
-  background: #532F8C;
-  color: white;
-  padding-bottom: 80px; }
-  .jumbotron .btn-primary {
-    background: #845ac7;
-    border-color: #845ac7; }
-    .jumbotron .btn-primary:hover {
-      background: #7646c1; }
-  .jumbotron p {
-    color: #d9ccee;
-    max-width: 75%;
-    margin: 1em auto 2em; }
-  .navbar + .jumbotron {
-    margin-top: -20px; }
-  .jumbotron .lang-logo {
-    display: block;
-    background: #B01302;
-    border-radius: 50%;
-    overflow: hidden;
-    width: 100px;
-    height: 100px;
-    margin: auto;
-    border: 2px solid white; }
-    .jumbotron .lang-logo img {
-      max-width: 100%; }
+@font-face {
+    font-family: 'importedFont';
+    src: url('MyFontsWebFontsKit/webfonts/358B8C_0_0.eot');
+    /* IE9 Compat Modes */
+}
 
+* {
+    font-family: 'importedFont';
+}
+
+#sidebar {
+    position: fixed;
+    right: 0;
+    width: 15%;
+    text-align: center;
+}
+
+.side {
+  margin-right: 25px;
+  margin-left: 0;
+}
+
+.container {
+    width: 80%;
+    max-width: 80rem;
+}
+.number {
+  display: inline-block;
+  padding-left: 8px;
+  padding-right: 8px;
+  border: 1px solid black;
+}
+
+.box {
+    height: 230px;
+    width: 155px;
+    display: inline-block;
+    text-align: center;
+    background-position-y: bottom;
+}
+
+.box-top {
+    margin-left: 170px;
+    margin-bottom: 12px;
+}
+
+.box-bottom {
+    margin-right: 173px;
+    margin-bottom: 75px;
+    margin-top: 12px;
+}
+
+.timeline {
+    width: 80%;
+}
+
+#o1 {
+    background-image: url('/images/o1.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-size: 35%;
+    background-position: center;
+}
+
+#o2 {
+    background-image: url('/images/o2.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-size: 35%;
+    background-position: center;
+}
+
+#o3 {
+    background-image: url('/images/o3.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-size: 35%;
+    background-position: center;
+}
+
+#o4 {
+    background-image: url('/images/o4.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-size: 35%;
+    background-position: center;
+}
+
+#o5 {
+    background-image: url('/images/o5.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-size: 35%;
+    background-position: center;
+}
+
+#o6 {
+    background-image: url('/images/o6.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-size: 35%;
+    background-position: center;
+}
+
+#o7 {
+    background-image: url('/images/o7.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-size: 35%;
+    background-position: center;
+}
+
+#o8 {
+    background-image: url('/images/o8.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-size: 35%;
+    background-position: center;
+}
+
+#o9 {
+    background-image: url('/images/o9.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-size: 35%;
+    background-position: center;
+}
+
+#o10 {
+    background-image: url('/images/o10.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-size: 35%;
+    background-position: center;
+}
+
+#o11 {
+    background-image: url('/images/o11.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-size: 35%;
+    background-position: center;
+}
+
+#o12 {
+    background-image: url('/images/o12.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-size: 35%;
+    background-position: center;
+}
+
+#o13 {
+    background-image: url('/images/o13.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+#o14 {
+    background-image: url('/images/o14.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+#o15 {
+    background-image: url('/images/o15.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+#o16 {
+    background-image: url('/images/o16.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+#o17 {
+    background-image: url('/images/o17.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+#o18 {
+    background-image: url('/images/o18.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+#o19 {
+    background-image: url('/images/o19.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+#o20 {
+    background-image: url('/images/o20.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+#o21 {
+    background-image: url('/images/o21.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+#o22 {
+    background-image: url('/images/o22.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+#o23 {
+    background-image: url('/images/o23.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+#o24 {
+    background-image: url('/images/o24.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+#o25 {
+    background-image: url('/images/o25.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+#o26 {
+    background-image: url('/images/o26.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+#o27 {
+    background-image: url('/images/o27.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+#o28 {
+    background-image: url('/images/o28.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+#o29 {
+    background-image: url('/images/o29.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+#o30 {
+    background-image: url('/images/o30.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+#o31 {
+    background-image: url('/images/o31.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+#o32 {
+    background-image: url('/images/o32.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+}
