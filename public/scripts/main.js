@@ -1,12 +1,7 @@
-// TODO: render images in canvas
 // TODO: add sounds to each ID
 // TODO: looping functionality
 // TODO: recording functionality
 // TODO: make images move through lanes * speed
-// TODO: download song after recording has ended
-// TODO: START / STOP
-
-
 var canvas;
 var canWidth;
 var img;
@@ -17,9 +12,11 @@ var y3 = 0;
 var x2 = 85;
 var x3 = 149;
 var currentImg;
-var currentNode;
+var currentNode = null;
 
-var it = 0;
+var imgW;
+var imgH;
+
 function setup() {
     canvas = createCanvas(windowWidth / 7, windowHeight);
     canvas.parent('sidebar');
@@ -30,34 +27,49 @@ function draw() {
     strokeWeight(2);
     canWidth = canvas.width;
     noFill();
-    rect(2, 30, canWidth - 5, canvas.height );
+    rect(2, 30, canWidth - 5, canvas.height);
 
 }
 
 function mousePressed() {
-  if (currentNode.context.innerHTML == 1) {
-      putImageInLane1(currentImg);
-  }
-  if (currentNode.context.innerHTML == 2) {
-    putImageInLane2(currentImg);
-  }
-  if (currentNode.context.innerHTML == 3) {
-    putImageInLane3(currentImg);
-  }
+
+    if (currentNode != null) {
+        if (currentNode.context.innerHTML == 1) {
+            putImageInLane1(currentImg);
+        }
+        if (currentNode.context.innerHTML == 2) {
+            putImageInLane2(currentImg);
+        }
+        if (currentNode.context.innerHTML == 3) {
+            putImageInLane3(currentImg);
+        }
+    }
+
 }
+
 function determineLane(node) {
     var nodeValue = node.context.innerHTML;
     if (nodeValue.length < 2) { // Only call functions if button is hit
+      var nodeID = node.parent()[0].id;
         findImageURL(node);
         if (nodeValue === '1') { // DO sound stuff her
+          console.log(nodeID);
+          // call the play function for 1 + ID
         } else if (nodeValue === '2') { // DO sound stuff here
             console.log("hits 2");
+              // call the play function for 2 + ID
         } else if (nodeValue === '3') { // DO sound stuff here
             console.log("hits 3");
+              // call the play function for 3 + ID
         } else {
             console.log("did not hit value");
         }
     }
+}
+
+
+function playLoop1(nodeID) {
+    
 }
 
 function findImageURL(node) {
@@ -72,31 +84,34 @@ function findImageURL(node) {
     passImage(result);
 }
 
-function upIterator() {
-  iterator++;
+function passImage(result) {
+    currentImg = loadImage(result);
 }
 
-function passImage(result) {
-  currentImg = loadImage(result);
+function determineSize(currentImg) {
+  var randomNum = Math.random(1, 3);
+  imgW = currentImg.width * randomNum;
+  imgH = currentImg.height * randomNum;
+
 }
 
 function putImageInLane1(currentImg) {
-  image(currentImg, x1, y1);
-  y1+=40;
+    determineSize(currentImg);
+    image(currentImg, x1, y1, imgW, imgH);
+    y1 += 40;
 }
 
 function putImageInLane2(currentImg) {
-  image(currentImg, x2, y2);
-  y2+=40;
+    determineSize(currentImg);
+    image(currentImg, x2, y2, imgW, imgH);
+    y2 += 40;
 }
 
 function putImageInLane3(currentImg) {
-  image(currentImg, x3, y3);
-  y3+=40;
+    determineSize(currentImg);
+    image(currentImg, x3, y3, imgW, imgH);
+    y3 += 40;
 }
-
-
-
 
 
 $(document).ready(function() {
