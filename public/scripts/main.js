@@ -69,13 +69,15 @@ function determineLane(node) {
 
 
 function playLoop1(nodeID) {
-    
+
 }
 
+// TODO Replace with static image URL when deployed
+// TODO Upload all images to s3 bucket --> url prefix will be easier to remove
 function findImageURL(node) {
     var imageURL = node.parent().css('background-image');
     var imgRegEx = /(https?:\/\/.*\.(?:png))/i;
-    var remove = "http://localhost:5000"; // Replace with static image URL when deployed
+    var remove = "http://localhost:5000";
     var result = imgRegEx.exec(imageURL)[0];
     result = result.replace(remove, '');
     var prefix = result.substring(0, 8);
