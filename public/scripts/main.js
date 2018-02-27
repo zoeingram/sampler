@@ -32,8 +32,9 @@ function draw() {
 }
 
 function mousePressed() {
+  console.log(currentImg)
 
-    if (currentNode != null) {
+    // if (currentNode != null) {
         if (currentNode.context.innerHTML == 1) {
             putImageInLane1(currentImg);
         }
@@ -43,7 +44,7 @@ function mousePressed() {
         if (currentNode.context.innerHTML == 3) {
             putImageInLane3(currentImg);
         }
-    }
+    // }
 
 }
 
@@ -77,12 +78,12 @@ function playLoop1(nodeID) {
 function findImageURL(node) {
     var imageURL = node.parent().css('background-image');
     var imgRegEx = /(https?:\/\/.*\.(?:png))/i;
-    var remove = "http://localhost:5000";
+    var remove = "https://s3-us-west-1.amazonaws.com/series-archive/";
     var result = imgRegEx.exec(imageURL)[0];
-    result = result.replace(remove, '');
-    var prefix = result.substring(0, 8);
-    result = result.replace(prefix, '');
-    result = prefix + "small/" + result;
+    // result = result.replace(remove, '');
+    // var prefix = result.substring(0, 8);
+    // result = result.replace(prefix, '');
+    // result = prefix + "small/" + result;
     passImage(result);
 }
 
@@ -123,7 +124,6 @@ $(document).ready(function() {
         currentNode = $(event.target);
         determineLane(currentNode);
         currentNode.blur();
-
     });
 
 }); // End document ready
