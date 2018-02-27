@@ -6,9 +6,9 @@ var canvas;
 var canWidth;
 var img;
 var x1 = 10;
-var y1 = 0;
-var y2 = 0;
-var y3 = 0;
+var y1 = 50;
+var y2 = 50;
+var y3 = 50;
 var x2 = 85;
 var x3 = 149;
 var currentImg;
@@ -91,7 +91,7 @@ function passImage(result) {
 }
 
 function determineSize(currentImg) {
-  var randomNum = Math.random(1, 3);
+  var randomNum = Math.random(2, 3);
   imgW = currentImg.width * randomNum;
   imgH = currentImg.height * randomNum;
 
