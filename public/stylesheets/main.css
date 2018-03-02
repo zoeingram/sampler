@@ -54,218 +54,148 @@
     width: 80%;
 }
 
+.image {
+  background-repeat: no-repeat;
+}
+
+.image-center {
+  background-position: center;
+}
+
+.image-contain {
+  background-size: contain;
+}
+.image-sized {
+  background-size: 73%;
+}
+
+/* https://s3-us-west-1.amazonaws.com/series-archive */
+
 #o1 {
-    background-image: url('https://s3-us-west-1.amazonaws.com/series-archive/o1.png');
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-size: 31%;
-    background-position: center;
+    background-image: url('/images/o1.png');
 }
 
 #o2 {
-    background-image: url('https://s3-us-west-1.amazonaws.com/series-archive/o2.png');
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-size: 31%;
-    background-position: center;
+    background-image: url('/images/o2.png');
 }
 
 #o3 {
-    background-image: url('https://s3-us-west-1.amazonaws.com/series-archive/o3.png');
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-size: 31%;
-    background-position: center;
+    background-image: url('/images/o3.png');
 }
 
 #o4 {
-    background-image: url('https://s3-us-west-1.amazonaws.com/series-archive/o4.png');
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-size: 31%;
-    background-position: center;
+    background-image: url('/images/o4.png');
 }
 
 #o5 {
-    background-image: url('https://s3-us-west-1.amazonaws.com/series-archive/o5.png');
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-size: 31%;
-    background-position: center;
+    background-image: url('/images/o5.png');
 }
 
 #o6 {
-    background-image: url('https://s3-us-west-1.amazonaws.com/series-archive/o6.png');
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-size: 31%;
-    background-position: center;
+    background-image: url('/images/o6.png');
 }
 
 #o7 {
-    background-image: url('https://s3-us-west-1.amazonaws.com/series-archive/o7.png');
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-size: 31%;
-    background-position: center;
+    background-image: url('/images/o7.png');
 }
 
 #o8 {
-    background-image: url('https://s3-us-west-1.amazonaws.com/series-archive/o8.png');
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-size: 31%;
-    background-position: center;
+    background-image: url('/images/o8.png');
 }
 
 #o9 {
-    background-image: url('https://s3-us-west-1.amazonaws.com/series-archive/o9.png');
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-size: 31%;
-    background-position: center;
+    background-image: url('/images/o9.png');
 }
 
 #o10 {
-    background-image: url('https://s3-us-west-1.amazonaws.com/series-archive/o10.png');
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-size: 31%;
-    background-position: center;
+    background-image: url('/images/o10.png');
 }
 
 #o11 {
-    background-image: url('https://s3-us-west-1.amazonaws.com/series-archive/o11.png');
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-size: 31%;
-    background-position: center;
+    background-image: url('/images/o11.png');
 }
 
 #o12 {
-    background-image: url('https://s3-us-west-1.amazonaws.com/series-archive/o12.png');
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-size: 31%;
-    background-position: center;
+    background-image: url('/images/o12.png');
 }
 
 #o13 {
-    background-image: url('https://s3-us-west-1.amazonaws.com/series-archive/o13.png');
-    background-size: contain;
-    background-repeat: no-repeat;
+    background-image: url('/images/o13.png');
+
 }
 
 #o14 {
-    background-image: url('https://s3-us-west-1.amazonaws.com/series-archive/o14.png');
-    background-size: contain;
-    background-repeat: no-repeat;
+    background-image: url('/images/o14.png');
 }
 
 #o15 {
-    background-image: url('https://s3-us-west-1.amazonaws.com/series-archive/o15.png');
-    background-size: contain;
-    background-repeat: no-repeat;
+    background-image: url('/images/o15.png');
 }
 
 #o16 {
-    background-image: url('https://s3-us-west-1.amazonaws.com/series-archive/o16.png');
-    background-size: contain;
-    background-repeat: no-repeat;
+    background-image: url('/images/o16.png');
 }
 
 #o17 {
-    background-image: url('https://s3-us-west-1.amazonaws.com/series-archive/o17.png');
-    background-size: contain;
-    background-repeat: no-repeat;
+    background-image: url('/images/o17.png');
 }
 
 #o18 {
-    background-image: url('https://s3-us-west-1.amazonaws.com/series-archive/o18.png');
-    background-size: contain;
-    background-repeat: no-repeat;
+    background-image: url('/images/o18.png');
 }
 
 #o19 {
-    background-image: url('https://s3-us-west-1.amazonaws.com/series-archive/o19.png');
-    background-size: contain;
-    background-repeat: no-repeat;
+    background-image: url('/images/o19.png');
 }
 
 #o20 {
-    background-image: url('https://s3-us-west-1.amazonaws.com/series-archive/o20.png');
-    background-size: contain;
-    background-repeat: no-repeat;
+    background-image: url('/images/o20.png');
 }
 
 #o21 {
-    background-image: url('https://s3-us-west-1.amazonaws.com/series-archive/o21.png');
-    background-size: contain;
-    background-repeat: no-repeat;
+    background-image: url('/images/o21.png');
 }
 
 #o22 {
-    background-image: url('https://s3-us-west-1.amazonaws.com/series-archive/o22.png');
-    background-size: contain;
-    background-repeat: no-repeat;
+    background-image: url('/images/o22.png');
 }
 
 #o23 {
-    background-image: url('https://s3-us-west-1.amazonaws.com/series-archive/o23.png');
-    background-size: contain;
-    background-repeat: no-repeat;
+    background-image: url('/images/o23.png');
 }
 
 #o24 {
-    background-image: url('https://s3-us-west-1.amazonaws.com/series-archive/o24.png');
-    background-size: contain;
-    background-repeat: no-repeat;
+    background-image: url('/images/o24.png');
 }
 
 #o25 {
-    background-image: url('https://s3-us-west-1.amazonaws.com/series-archive/o25.png');
-    background-size: contain;
-    background-repeat: no-repeat;
+    background-image: url('/images/o25.png');
 }
 
 #o26 {
-    background-image: url('https://s3-us-west-1.amazonaws.com/series-archive/o26.png');
-    background-size: contain;
-    background-repeat: no-repeat;
+    background-image: url('/images/o26.png');
 }
 
 #o27 {
-    background-image: url('https://s3-us-west-1.amazonaws.com/series-archive/o27.png');
-    background-size: contain;
-    background-repeat: no-repeat;
+    background-image: url('/images/o27.png');
 }
 
 #o28 {
-    background-image: url('https://s3-us-west-1.amazonaws.com/series-archive/o28.png');
-    background-size: contain;
-    background-repeat: no-repeat;
+    background-image: url('/images/o28.png');
 }
 
 #o29 {
-    background-image: url('https://s3-us-west-1.amazonaws.com/series-archive/o29.png');
-    background-size: contain;
-    background-repeat: no-repeat;
+    background-image: url('/images/o29.png');
 }
 
 #o30 {
-    background-image: url('https://s3-us-west-1.amazonaws.com/series-archive/o30.png');
-    background-size: contain;
-    background-repeat: no-repeat;
+    background-image: url('/images/o30.png');
 }
 
 #o31 {
-    background-image: url('https://s3-us-west-1.amazonaws.com/series-archive/o31.png');
-    background-size: contain;
-    background-repeat: no-repeat;
+    background-image: url('/images/o31.png');
 }
 
 #o32 {
-    background-image: url('https://s3-us-west-1.amazonaws.com/series-archive/o32.png');
-    background-size: contain;
-    background-repeat: no-repeat;
+    background-image: url('/images/o32.png');
 }
