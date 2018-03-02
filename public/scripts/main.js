@@ -5,14 +5,12 @@
 var canvas;
 var canWidth;
 var img;
-var x1 = -10;
-var y1 = 0;
-
-var y2 = 80;
-var y3 = 0;
-
-var x2 = 10;
-var x3 = 120;
+var x1 = 5,
+    x2 = 60,
+    x3 = 135;
+var y1 = 20,
+    y2 = 20,
+    y3 = 20;
 
 var currentImg;
 var currentNode = null;
@@ -31,7 +29,8 @@ function draw() {
   strokeWeight(2);
   canWidth = canvas.width;
   noFill();
-  // console.log(mouseX, mouseY)
+  line(canWidth/3, 0, canWidth/3, canvas.height)
+  line(canWidth - canWidth/3, 0,canWidth - canWidth/3, canvas.height)
   rect(2, 30, canWidth - 5, canvas.height);
 }
 
@@ -55,19 +54,27 @@ function determineSideSizes(resultImg, min, max) {
   imgW = resultImg.width * factor;
   imgH = resultImg.height * factor;
 }
-
+function generateX (min, max) {
+  return Math.random() * (max - min) + min;
+}
 
 function passAndRenderImage(result, lane) {
   loadImage(result, function(img) {
     if (lane == 1) {
-      determineSideSizes(img, 0.2, 0.35);
+      determineSideSizes(img, 0.14, 0.23);
+      x1 = generateX(3, 12);
       image(img, x1, y1, imgW, imgH);
+      y1+=60;
     } else if (lane == 2) {
-      determineSideSizes(img, 0.35, 0.45);
+      determineSideSizes(img, 0.24, 0.35);
+      x2 = generateX(55, 75);
       image(img, x2, y2, imgW, imgH);
+      y2+=60;
     } else {
-      determineSideSizes(img, 0.45, 0.6);
+      determineSideSizes(img, 0.35, 0.43);
+      x3 = generateX(125, 150)
       image(img, x3, y3, imgW, imgH);
+      y3+=60;
     }
   });
 }
