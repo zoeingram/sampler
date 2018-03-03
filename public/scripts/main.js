@@ -19,6 +19,13 @@ var imgH;
 var buttonClass = 'number';
 var result;
 
+var soundFile;
+
+function preload() {
+ mySound = loadSound('/sounds/o1.wav');
+}
+
+
 function setup() {
   canvas = createCanvas(windowWidth / 7, windowHeight);
   canvas.parent('sidebar');
@@ -29,8 +36,8 @@ function draw() {
   strokeWeight(2);
   canWidth = canvas.width;
   noFill();
-  line(canWidth/3, 0, canWidth/3, canvas.height)
-  line(canWidth - canWidth/3, 0,canWidth - canWidth/3, canvas.height)
+  // line(canWidth/3, 0, canWidth/3, canvas.height)
+  // line(canWidth - canWidth/3, 0,canWidth - canWidth/3, canvas.height)
   rect(2, 30, canWidth - 5, canvas.height);
 }
 
@@ -38,7 +45,9 @@ function mouseClicked() {
   if ($(currentNode).attr('class') == buttonClass) {
     var laneNumber = currentNode.context.innerHTML;
     findImageUrlLocal(currentNode);
+    findSoundPath(result)
     passAndRenderImage(result, laneNumber);
+    playLoop(soundFile, laneNumber);
   }
 }
 
@@ -49,11 +58,17 @@ function findImageUrlLocal(node) {
   result = result.substring(result.indexOf("0/") + 1);
 }
 
+function findSoundPath(node) {
+  soundFile = node.substring(node.indexOf('/o') + 1);
+  soundFile = soundFile.substr(0, soundFile.length -3) + 'wav';
+}
+
 function determineSideSizes(resultImg, min, max) {
   var factor = Math.random() * (max - min) + min;
   imgW = resultImg.width * factor;
   imgH = resultImg.height * factor;
 }
+
 function generateX (min, max) {
   return Math.random() * (max - min) + min;
 }
@@ -77,6 +92,10 @@ function passAndRenderImage(result, lane) {
       y3+=60;
     }
   });
+}
+
+function playLoop(sound, lane) {
+  console.log(sound, lane);
 }
 
 $(document).ready(function() {
