@@ -13,6 +13,7 @@ var currentNode = null;
 var imgW;
 var imgH;
 var buttonClass = 'number';
+var boxClass = 'box';
 var result;
 
 var soundFile;
@@ -24,6 +25,7 @@ var loop1;
 var loop2;
 var loop3;
 var soundLoadLoopA, soundLoadLoopB, soundLoadLoopC;
+var singleSound;
 
 var state = false;
 
@@ -57,17 +59,23 @@ function draw() {
 }
 
 function mouseClicked() {
-  if ($(currentNode).attr('class') == buttonClass) {
-    var value = $(currentNode);
+  var type = $(currentNode).attr('class').split(' ')[0];
+  var value = $(currentNode);
+  if (type == 'box') {
+    var indexVal = determineIDIndex(value, 'box');
+    findImageUrlLocal(value, 'box');
+    var path = findSoundPath(result, 1);
+    playSingleSound(path, indexVal);
+  }
+  if (type == buttonClass) {
     var currentState = $(value).attr('data-on');
     var laneNumber = value.context.innerHTML;
-    var indexVal = determineIDIndex(value);
+    var indexVal = determineIDIndex(value, 'button');
     if (currentState == 'false') {
       $(value).attr('data-on', 'true');
-      findImageUrlLocal(value);
-    var path = findSoundPath(result, laneNumber);
+      findImageUrlLocal(value, 'button');
+      var path = findSoundPath(result, laneNumber);
       passAndRenderImage(result, laneNumber);
-      console.log(path)
       playLoop(path, laneNumber, indexVal)
     } else if (currentState == 'true') {
       $(value).attr('data-on', 'false');
@@ -76,11 +84,17 @@ function mouseClicked() {
       console.log("blah");
     }
   }
+
 }
 
 
-function findImageUrlLocal(node) {
-  var imageURL = node.parent().css('background-image');
+function findImageUrlLocal(node, type) {
+  var imageURL;
+  if (type == 'box') {
+    imageURL = node.css('background-image');
+  } else {
+    imageURL = node.parent().css('background-image');
+  }
   var imgRegEx = /(https?:\/\/.*\.(?:png))/i;
   result = imgRegEx.exec(imageURL)[0];
   result = result.substring(result.indexOf("0/") + 1);
@@ -101,12 +115,18 @@ function findSoundPath(node, laneNumber) {
   return soundFile;
 }
 
-function determineIDIndex(node) {
-  var idIndex = $(node).parent().attr('id');
+function determineIDIndex(node, type) {
+  var idIndex;
+  if (type == 'box') {
+    idIndex = $(node).attr('id');
+  } else {
+    idIndex = $(node).parent().attr('id');
+  }
   idIndex = idIndex.substring(idIndex.indexOf('o') + 1);
   idIndex = parseInt(idIndex);
   return idIndex;
 }
+
 
 function determineSideSizes(resultImg, min, max) {
   var factor = Math.random() * (max - min) + min;
@@ -140,9 +160,7 @@ function passAndRenderImage(result, lane) {
 }
 
 function playLoop(sound, lane, index) {
-  console.log(sound)
   if (lane == 1) {
-
     loop1 = soundFilesA[index];
     loop1.loop();
   } else if (lane == 2) {
@@ -166,6 +184,12 @@ function stopLoop(sound, lane, index) {
     loop3.stop();
   }
 }
+
+function playSingleSound(sound, index) {
+  singleSound = soundFilesA[index];
+  singleSound.play();
+}
+
 
 
 $(document).ready(function() {
