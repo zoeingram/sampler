@@ -1,7 +1,3 @@
-// TODO: add sounds to each ID
-// TODO: looping functionality
-// TODO: recording functionality
-// TODO: make images move through lanes * speed
 var canvas;
 var canWidth;
 var img;
@@ -46,11 +42,11 @@ function preload() {
   }
 }
 
-
 function setup() {
   canvas = createCanvas(windowWidth / 7, windowHeight);
   canvas.parent('sidebar');
   canvas.position(0, 0);
+  canvas.id('sidebarCanvas');
 }
 
 function draw() {
@@ -171,7 +167,18 @@ function stopLoop(sound, lane, index) {
 
 
 $(document).ready(function() {
+  var composition, dataURL;
     $(document).click(function(event) {
         currentNode = $(event.target);
+    });
+    $('#print').on('click', function() {
+       composition = document.getElementById('sidebarCanvas');
+       dataURL = composition.toDataURL();
+    });
+    $('#show').on('click', function() {
+      var visComp = new Image();
+      visComp.src = dataURL;
+      console.log(visComp)
+      $('#test').append(visComp);
     });
 });
