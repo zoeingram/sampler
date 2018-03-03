@@ -7,7 +7,7 @@ var canWidth;
 var img;
 var x1 = 5,
     x2 = 60,
-    x3 = 135;
+    x3 = 130;
 var y1 = 20,
     y2 = 20,
     y3 = 20;
@@ -20,17 +20,29 @@ var buttonClass = 'number';
 var result;
 
 var soundFile;
-var soundFiles = ['files'];
+var soundFilesA = ['files1'];
+var soundFilesB = ['files2'];
+var soundFilesC = ['files3'];
+
 var loop1;
 var loop2;
 var loop3;
-var soundLoadLoop;
+var soundLoadLoopA, soundLoadLoopB, soundLoadLoopC;
 
+var state = false;
 
 function preload() {
-  for(var i = 1; i <= 12; i++) {
-    soundLoadLoop = loadSound('/sounds/o' + i + '.wav');
-    soundFiles.push(soundLoadLoop);
+  for(var i = 1; i <= 1; i++) {
+    soundLoadLoopA = loadSound('/sounds/o' + i + 'a.wav');
+    soundFilesA.push(soundLoadLoopA);
+  }
+  for(var i = 1; i <= 1; i++) {
+    soundLoadLoopB = loadSound('/sounds/o' + i + 'b.wav');
+    soundFilesB.push(soundLoadLoopB);
+  }
+  for(var i = 1; i <= 1; i++) {
+    soundLoadLoopC = loadSound('/sounds/o' + i + 'c.wav');
+    soundFilesC.push(soundLoadLoopC);
   }
 }
 
@@ -45,21 +57,31 @@ function draw() {
   strokeWeight(2);
   canWidth = canvas.width;
   noFill();
-  // line(canWidth/3, 0, canWidth/3, canvas.height)
-  // line(canWidth - canWidth/3, 0,canWidth - canWidth/3, canvas.height)
   rect(2, 30, canWidth - 5, canvas.height);
 }
 
 function mouseClicked() {
   if ($(currentNode).attr('class') == buttonClass) {
-    var laneNumber = currentNode.context.innerHTML;
-    var indexVal = determineIDIndex(currentNode);
-    findImageUrlLocal(currentNode);
-    findSoundPath(result)
-    passAndRenderImage(result, laneNumber);
-    playLoop(soundFile, laneNumber, indexVal);
+    var value = $(currentNode);
+    var currentState = $(value).attr('data-on');
+    var laneNumber = value.context.innerHTML;
+    var indexVal = determineIDIndex(value);
+
+    if (currentState == 'false') {
+      $(value).attr('data-on', 'true');
+      findImageUrlLocal(value);
+      findSoundPath(result, laneNumber);
+      passAndRenderImage(result, laneNumber);
+      playLoop(value, laneNumber, indexVal)
+    } else if (currentState == 'true') {
+      $(value).attr('data-on', 'false');
+      stopLoop(value, laneNumber, indexVal)
+    } else {
+      console.log("blah");
+    }
   }
 }
+
 
 function findImageUrlLocal(node) {
   var imageURL = node.parent().css('background-image');
@@ -68,9 +90,18 @@ function findImageUrlLocal(node) {
   result = result.substring(result.indexOf("0/") + 1);
 }
 
-function findSoundPath(node) {
+function findSoundPath(node, laneNumber) {
+  var ext;
+  if (laneNumber == 1) {
+    ext = 'a';
+  } else if (laneNumber == 2) {
+    ext = 'b';
+  } else {
+    ext = 'c';
+  }
+
   soundFile = node.substring(node.indexOf('/o') + 1);
-  soundFile = soundFile.substr(0, soundFile.length -3) + 'wav';
+  soundFile = soundFile.substr(0, soundFile.length -4) + ext + '.wav';
 }
 
 function determineIDIndex(node) {
@@ -114,16 +145,30 @@ function passAndRenderImage(result, lane) {
 
 function playLoop(sound, lane, index) {
   if (lane == 1) {
-    loop1 = soundFiles[index];
+    loop1 = soundFilesA[index];
     loop1.loop();
   } else if (lane == 2) {
-   //play sound 2 and loop
-   // mySound.stop()
+    loop2 = soundFilesB[index];
+    loop2.loop();
   } else {
-   //play sound 3 and loop
+    loop3 = soundFilesC[index];
+    loop3.loop();
   }
-
 }
+
+function stopLoop(sound, lane, index) {
+  if (lane == 1) {
+    loop1 = soundFilesA[index];
+    loop1.stop();
+  } else if (lane == 2) {
+    loop2 = soundFilesB[index];
+    loop2.stop();
+  } else {
+    loop3 = soundFilesC[index];
+    loop3.stop();
+  }
+}
+
 
 $(document).ready(function() {
     $(document).click(function(event) {
