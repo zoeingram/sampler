@@ -28,15 +28,15 @@ var soundLoadLoopA, soundLoadLoopB, soundLoadLoopC;
 var state = false;
 
 function preload() {
-  for(var i = 1; i <= 1; i++) {
+  for(var i = 1; i <= 32; i++) {
     soundLoadLoopA = loadSound('/sounds/o' + i + 'a.wav');
     soundFilesA.push(soundLoadLoopA);
   }
-  for(var i = 1; i <= 1; i++) {
+  for(var i = 1; i <= 32; i++) {
     soundLoadLoopB = loadSound('/sounds/o' + i + 'b.wav');
     soundFilesB.push(soundLoadLoopB);
   }
-  for(var i = 1; i <= 1; i++) {
+  for(var i = 1; i <= 32; i++) {
     soundLoadLoopC = loadSound('/sounds/o' + i + 'c.wav');
     soundFilesC.push(soundLoadLoopC);
   }
@@ -62,13 +62,13 @@ function mouseClicked() {
     var currentState = $(value).attr('data-on');
     var laneNumber = value.context.innerHTML;
     var indexVal = determineIDIndex(value);
-
     if (currentState == 'false') {
       $(value).attr('data-on', 'true');
       findImageUrlLocal(value);
-      findSoundPath(result, laneNumber);
+    var path = findSoundPath(result, laneNumber);
       passAndRenderImage(result, laneNumber);
-      playLoop(value, laneNumber, indexVal)
+      console.log(path)
+      playLoop(path, laneNumber, indexVal)
     } else if (currentState == 'true') {
       $(value).attr('data-on', 'false');
       stopLoop(value, laneNumber, indexVal)
@@ -98,6 +98,7 @@ function findSoundPath(node, laneNumber) {
 
   soundFile = node.substring(node.indexOf('/o') + 1);
   soundFile = soundFile.substr(0, soundFile.length -4) + ext + '.wav';
+  return soundFile;
 }
 
 function determineIDIndex(node) {
@@ -112,7 +113,6 @@ function determineSideSizes(resultImg, min, max) {
   imgW = resultImg.width * factor;
   imgH = resultImg.height * factor;
 }
-
 
 function generateX (min, max) {
   return Math.random() * (max - min) + min;
@@ -140,7 +140,9 @@ function passAndRenderImage(result, lane) {
 }
 
 function playLoop(sound, lane, index) {
+  console.log(sound)
   if (lane == 1) {
+
     loop1 = soundFilesA[index];
     loop1.loop();
   } else if (lane == 2) {
@@ -171,14 +173,13 @@ $(document).ready(function() {
     $(document).click(function(event) {
         currentNode = $(event.target);
     });
-    $('#print').on('click', function() {
-       composition = document.getElementById('sidebarCanvas');
-       dataURL = composition.toDataURL();
-    });
-    $('#show').on('click', function() {
+
+    $('#outro').on('click', function() {
+      composition = document.getElementById('sidebarCanvas');
+      dataURL = composition.toDataURL();
       var visComp = new Image();
       visComp.src = dataURL;
-      console.log(visComp)
-      $('#test').append(visComp);
+      $(visComp).attr('id', 'printComp');
+      $('#printme').append(visComp);
     });
 });
