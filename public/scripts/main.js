@@ -27,6 +27,7 @@ var loop3;
 var soundLoadLoopA, soundLoadLoopB, soundLoadLoopC;
 var singleSound;
 
+var orderOfSounds = [];
 var state = false;
 
 function preload() {
@@ -81,7 +82,6 @@ function mouseClicked() {
       $(value).attr('data-on', 'false');
       stopLoop(value, laneNumber, indexVal)
     } else {
-      console.log("blah");
     }
   }
 
@@ -112,6 +112,8 @@ function findSoundPath(node, laneNumber) {
 
   soundFile = node.substring(node.indexOf('/o') + 1);
   soundFile = soundFile.substr(0, soundFile.length -4) + ext + '.wav';
+
+  orderOfSounds.push(soundFile);
   return soundFile;
 }
 
@@ -190,6 +192,11 @@ function playSingleSound(sound, index) {
   singleSound.play();
 }
 
+function formatArray() {
+  for(var i = 0; i < orderOfSounds.length; i++) {
+    $('#list').append('<li>'+ orderOfSounds[i] + '</li>')
+  }
+}
 
 
 $(document).ready(function() {
@@ -205,5 +212,7 @@ $(document).ready(function() {
       visComp.src = dataURL;
       $(visComp).attr('id', 'printComp');
       $('#printme').append(visComp);
+      formatArray()
+      printJS('printme', 'html')
     });
 });
