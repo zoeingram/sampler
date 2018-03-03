@@ -20,9 +20,18 @@ var buttonClass = 'number';
 var result;
 
 var soundFile;
+var soundFiles = ['files'];
+var loop1;
+var loop2;
+var loop3;
+var soundLoadLoop;
+
 
 function preload() {
- mySound = loadSound('/sounds/o1.wav');
+  for(var i = 1; i <= 12; i++) {
+    soundLoadLoop = loadSound('/sounds/o' + i + '.wav');
+    soundFiles.push(soundLoadLoop);
+  }
 }
 
 
@@ -44,10 +53,11 @@ function draw() {
 function mouseClicked() {
   if ($(currentNode).attr('class') == buttonClass) {
     var laneNumber = currentNode.context.innerHTML;
+    var indexVal = determineIDIndex(currentNode);
     findImageUrlLocal(currentNode);
     findSoundPath(result)
     passAndRenderImage(result, laneNumber);
-    playLoop(soundFile, laneNumber);
+    playLoop(soundFile, laneNumber, indexVal);
   }
 }
 
@@ -63,11 +73,19 @@ function findSoundPath(node) {
   soundFile = soundFile.substr(0, soundFile.length -3) + 'wav';
 }
 
+function determineIDIndex(node) {
+  var idIndex = $(node).parent().attr('id');
+  idIndex = idIndex.substring(idIndex.indexOf('o') + 1);
+  idIndex = parseInt(idIndex);
+  return idIndex;
+}
+
 function determineSideSizes(resultImg, min, max) {
   var factor = Math.random() * (max - min) + min;
   imgW = resultImg.width * factor;
   imgH = resultImg.height * factor;
 }
+
 
 function generateX (min, max) {
   return Math.random() * (max - min) + min;
@@ -94,8 +112,17 @@ function passAndRenderImage(result, lane) {
   });
 }
 
-function playLoop(sound, lane) {
-  console.log(sound, lane);
+function playLoop(sound, lane, index) {
+  if (lane == 1) {
+    loop1 = soundFiles[index];
+    loop1.loop();
+  } else if (lane == 2) {
+   //play sound 2 and loop
+   // mySound.stop()
+  } else {
+   //play sound 3 and loop
+  }
+
 }
 
 $(document).ready(function() {
